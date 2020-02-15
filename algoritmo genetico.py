@@ -86,7 +86,7 @@ if objetivo == 'max': #Reconhece como deve ser otimizada a função
 
         seg_iteracao=[]
         print ('\n>>>>>>>>Segunda iteração<<<<<<<<\n')
-        while xmax < xmax1 and xmax < max_x: #Enquanto o x do ponto de máximo for menor que esse mesmo x somado a um, e enquanto for menor que o limite máximo do domínio da função:
+        while xmax <= max_x: #Enquanto o x do ponto de máximo for menor que esse mesmo x somado a um, e enquanto for menor que o limite máximo do domínio da função:
             xmax=xmax+0.1 #Define a taxa de erro de 0,1 para a iteração
             if '+' in f:
              op_soma = f.index('+')
@@ -118,12 +118,14 @@ if objetivo == 'max': #Reconhece como deve ser otimizada a função
             print(f'f({xmax}) = {calculo}')
             seg_iteracao_max = max(seg_iteracao)
             pos_max1 = seg_iteracao.index(seg_iteracao_max)
-            print(f'\nO ponto de máximo da segunda iteração é:\nf({seg_iteracao[pos_max1][1]}) = {seg_iteracao[pos_max1][0]}')
+            seg_iteracao_x = seg_iteracao[pos_max1][1]
+            seg_iteracao_y = seg_iteracao[pos_max1][0]
+        print(f'\nO ponto de máximo da segunda iteração é:\nf({seg_iteracao_x}) = {seg_iteracao_y}')
 
         print ('\n>>>>>>>>Terceira iteração<<<<<<<<\n')
         ter_iteracao=[]
 
-        while xmax2 < xmax and xmax < max_x and xmax > min_x:
+        while xmax >= min_x:
             xmax = xmax - 0.1
             if '+' in f:
                 op_soma = f.index('+')
@@ -154,16 +156,18 @@ if objetivo == 'max': #Reconhece como deve ser otimizada a função
             print(f'f({xmax}) = {calculo}')
             ter_iteracao_max = max(ter_iteracao)
             pos_max2 = ter_iteracao.index(ter_iteracao_max)
-            print(f'\nO ponto de máximo da terceira iteração é:\nf({ter_iteracao[pos_max2][1]}) = {ter_iteracao[pos_max2][0]}')
+            ter_iteracao_x = ter_iteracao[pos_max2][1]
+            ter_iteracao_y = ter_iteracao[pos_max2][0]
+        print(f'\nO ponto de máximo da terceira iteração é:\nf({ter_iteracao_x}) = {ter_iteracao_y}')
 
         print (f'\n\n>>>>>>>>Primeira iteração<<<<<<<<\nO ponto de máximo da primeira iteração é:\nf({funcao[pos_max][1]}) = {funcao[pos_max][0]}')
-        print(f'\n>>>>>>>>Segunda iteração<<<<<<<<\nO ponto de máximo da segunda iteração é:\nf({seg_iteracao[pos_max1][1]}) = {seg_iteracao[pos_max1][0]}')
-        print(f'\n>>>>>>>>Terceira iteração<<<<<<<<\nO ponto de máximo da terceira iteração é:\nf({ter_iteracao[pos_max2][1]}) = {ter_iteracao[pos_max2][0]}')
+        print(f'\n>>>>>>>>Segunda iteração<<<<<<<<\nO ponto de máximo da segunda iteração é:\nf({seg_iteracao_x}) = {seg_iteracao_y}')
+        print(f'\n>>>>>>>>Terceira iteração<<<<<<<<\nO ponto de máximo da terceira iteração é:\nf({ter_iteracao_x}) = {ter_iteracao_y}')
 
         if max(seg_iteracao)<=max(ter_iteracao): #Define qual é o máximo global da função através de comparações
-            print(f'\n>>>>>>>>Conclusão:<<<<<<<<\nO ponto de máximo, definitivo da função é: \nf({ter_iteracao[pos_max2][1]}) = {ter_iteracao[pos_max2][0]}')
+            print(f'\n>>>>>>>>Conclusão:<<<<<<<<\nO ponto de máximo, definitivo da função é: \nf({ter_iteracao_x}) = {ter_iteracao_y}')
         else:
-            print(f'\nO ponto de máximo, definitivo da função é: \nf({seg_iteracao[pos_max1][1]}) = {seg_iteracao[pos_max1][0]}')
+            print(f'\nO ponto de máximo, definitivo da função é: \nf({seg_iteracao_x}) = {seg_iteracao_y}')
 
 elif objetivo == 'min': #Mesmos passos da procura pelo ponto de máximo
     print('\n>>>>>>>>Primeira iteração<<<<<<<<\n')
@@ -172,13 +176,11 @@ elif objetivo == 'min': #Mesmos passos da procura pelo ponto de máximo
 
     pos_min = funcao.index(min_funcao)
     xmin = funcao[pos_min][1]
-    xmin1 = xmin + 1
-    xmin2 = xmin - 1
     print(f'O ponto de mínimo da primeira iteração é:\nf({funcao[pos_min][1]}) = {funcao[pos_min][0]}')
 
     seg_iteracao = []
     print('\n>>>>>>>>Segunda iteração<<<<<<<<\n')
-    while xmin < xmin1 and max_x >= xmin:
+    while xmin <= max_x:
         xmin = xmin + 0.1
         if '+' in f:
             op_soma = f.index('+')
@@ -210,11 +212,11 @@ elif objetivo == 'min': #Mesmos passos da procura pelo ponto de máximo
         print(f'f({xmin}) = {calculo}')
         seg_iteracao_min = min(seg_iteracao)
         pos_min1 = seg_iteracao.index(seg_iteracao_min)
-        print(f'\nO ponto de mínimo da segunda iteração é:\nf({seg_iteracao[pos_min1][1]}) = {seg_iteracao[pos_min1][0]}')
+    print(f'\nO ponto de mínimo da segunda iteração é:\nf({seg_iteracao[pos_min1][1]}) = {seg_iteracao[pos_min1][0]}')
 
     print('\n>>>>>>>>Terceira iteração<<<<<<<<\n')
     ter_iteracao = []
-    while xmin > xmin2 and min_x <= xmin:
+    while xmin > min_x:
         xmin = xmin - 0.1
         if '+' in f:
             op_soma = f.index('+')
@@ -245,7 +247,7 @@ elif objetivo == 'min': #Mesmos passos da procura pelo ponto de máximo
         print(f'f({xmin}) = {calculo}')
         ter_iteracao_min = min(ter_iteracao)
         pos_min2 = ter_iteracao.index(ter_iteracao_min)
-        print(f'\nO ponto de máximo da terceira iteração é:\nf({ter_iteracao[pos_min2][1]}) = {ter_iteracao[pos_min2][0]}')
+    print(f'\nO ponto de máximo da terceira iteração é:\nf({ter_iteracao[pos_min2][1]}) = {ter_iteracao[pos_min2][0]}')
 
     print(
         f'\n\n>>>>>>>>Primeira iteração<<<<<<<<\nO ponto de mínimo da primeira iteração é:\nf({funcao[pos_min][1]}) = {funcao[pos_min][0]}')
@@ -256,7 +258,8 @@ elif objetivo == 'min': #Mesmos passos da procura pelo ponto de máximo
 
     if seg_iteracao_min <= ter_iteracao_min:
         print(
-            f'\n>>>>>>>>Conclusão:<<<<<<<<\nO ponto de mínimo, definitivo da função é: \nf({seg_iteracao[pos_min1][1]}) = {seg_iteracao[pos_min1][0]}')
+            f'\n>>>>>>>>Conclusão:<<<<<<<<\nSua função é f(x) = {f[0],f[1],f[2]}\nRestrita no domínio [{min_x, max_x}]'
+            f'\nO ponto de mínimo, definitivo da função é: \nf({seg_iteracao[pos_min1][1]}) = {seg_iteracao[pos_min1][0]}')
     elif seg_iteracao_min >= ter_iteracao_min:
         print(
             f'\nO ponto de mínimo, definitivo da função é: \nf({ter_iteracao[pos_min2][1]}) = {ter_iteracao[pos_min2][0]}')
