@@ -86,7 +86,7 @@ if objetivo == 'max': #Reconhece como deve ser otimizada a função
 
         seg_iteracao=[]
         print ('\n>>>>>>>>Segunda iteração<<<<<<<<\n')
-        while xmax <= max_x: #Enquanto o x do ponto de máximo for menor que esse mesmo x somado a um, e enquanto for menor que o limite máximo do domínio da função:
+        while xmax <= xmax1: #Enquanto o x do ponto de máximo for menor que esse mesmo x somado a um, e enquanto for menor que o limite máximo do domínio da função:
             xmax=xmax+0.1 #Define a taxa de erro de 0,1 para a iteração
             if '+' in f:
              op_soma = f.index('+')
@@ -125,7 +125,7 @@ if objetivo == 'max': #Reconhece como deve ser otimizada a função
         print ('\n>>>>>>>>Terceira iteração<<<<<<<<\n')
         ter_iteracao=[]
 
-        while xmax >= min_x:
+        while xmax >= xmax2:
             xmax = xmax - 0.1
             if '+' in f:
                 op_soma = f.index('+')
@@ -176,11 +176,13 @@ elif objetivo == 'min': #Mesmos passos da procura pelo ponto de máximo
 
     pos_min = funcao.index(min_funcao)
     xmin = funcao[pos_min][1]
+    xmin1 = xmin+1
+    xmin2 = xmin-1
     print(f'O ponto de mínimo da primeira iteração é:\nf({funcao[pos_min][1]}) = {funcao[pos_min][0]}')
 
     seg_iteracao = []
     print('\n>>>>>>>>Segunda iteração<<<<<<<<\n')
-    while xmin <= max_x:
+    while xmin <= xmin1:
         xmin = xmin + 0.1
         if '+' in f:
             op_soma = f.index('+')
@@ -216,7 +218,7 @@ elif objetivo == 'min': #Mesmos passos da procura pelo ponto de máximo
 
     print('\n>>>>>>>>Terceira iteração<<<<<<<<\n')
     ter_iteracao = []
-    while xmin > min_x:
+    while xmin > xmin2:
         xmin = xmin - 0.1
         if '+' in f:
             op_soma = f.index('+')
